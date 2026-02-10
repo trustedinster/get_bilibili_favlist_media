@@ -1,0 +1,16 @@
+{
+  "info": {
+    "list_list": {
+      "url": "https://api.bilibili.com/x/v3/fav/folder/created/list-all",
+      "method": "GET"
+    },
+    "list_content": {
+      "url": "https://api.bilibili.com/x/v3/fav/resource/list",
+      "method": "GET"
+    },
+    "info": {
+      "url": "https://api.bilibili.com/x/v3/fav/folder/info",
+      "method": "GET"
+    }
+  }
+}

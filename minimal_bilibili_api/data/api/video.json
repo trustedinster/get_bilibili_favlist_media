@@ -1,0 +1,8 @@
+{
+  "info": {
+    "info": {
+      "url": "https://api.bilibili.com/x/web-interface/view",
+      "method": "GET"
+    }
+  }
+}

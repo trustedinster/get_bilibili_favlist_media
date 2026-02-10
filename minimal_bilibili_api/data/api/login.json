@@ -1,0 +1,14 @@
+{
+  "qrcode": {
+    "web": {
+      "get_qrcode_and_token": {
+        "url": "https://passport.bilibili.com/x/passport-login/web/qrcode/generate",
+        "method": "GET"
+      },
+      "get_events": {
+        "url": "https://passport.bilibili.com/x/passport-login/web/qrcode/poll",
+        "method": "GET"
+      }
+    }
+  }
+}

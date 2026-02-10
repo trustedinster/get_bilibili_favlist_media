@@ -1,0 +1,12 @@
+{
+  "audio_info": {
+    "info": {
+      "url": "https://www.bilibili.com/audio/music-service-c/web/song/info",
+      "method": "GET"
+    },
+    "download_url": {
+      "url": "https://www.bilibili.com/audio/music-service-c/web/url",
+      "method": "GET"
+    }
+  }
+}
