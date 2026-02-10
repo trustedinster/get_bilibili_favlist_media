@@ -1,247 +1,140 @@
-![bilibili-api logo](https://raw.githubusercontent.com/Nemo2011/bilibili-api/main/design/logo.png)
+minimal_bilibili_api
 
-<div align="center">
+精简版哔哩哔哩 API 库
 
-# bilibili-api
+## 功能特性
 
-[![API 数量](https://img.shields.io/badge/API%20数量-400+-blue)][api.json]
-[![LICENSE](https://img.shields.io/badge/LICENSE-GPLv3+-red)][LICENSE]
-[![Python](https://img.shields.io/badge/python-3.9+-blue)](https://www.python.org)
-[![Stable Version](https://img.shields.io/pypi/v/bilibili-api-python?label=stable)][pypi]
-[![Pre-release Version](https://img.shields.io/github/v/release/Nemo2011/bilibili-api?label=pre-release&include_prereleases&sort=semver)][pypi-dev]
-[![STARS](https://img.shields.io/github/stars/nemo2011/bilibili-api?color=yellow&label=Github%20Stars)][stargazers]
-[![Testing](https://github.com/Nemo2011/bilibili-api/actions/workflows/testing.yml/badge.svg?branch=dev)](https://github.com/Nemo2011/bilibili-api/actions/workflows/testing.yml)
+- 🚀 **轻量级**: 只保留核心功能，去除冗余代码
+- 🔐 **登录支持**: 支持二维码登录
+- 📁 **收藏夹**: 获取收藏夹列表和内容
+- 🎵 **音频下载**: 获取音频信息和下载链接
+- 🎬 **视频标题**: 获取视频标题信息
+- ⚡ **高性能**: 基于 curl_cffi，支持 HTTP/2
 
-**:warning: 接口可能改动，请及时更新最新版 [![Stable Version](https://img.shields.io/pypi/v/bilibili-api-python?label=stable)][pypi]**
+## 安装依赖
 
-</div>
-
-**注意事项：使用此模块时请仅用于学习和测试，禁止用于非法用途及其他恶劣的社区行为如：恶意刷屏、辱骂黄暴、各种形式的滥用等，违规此模块许可证 `GNU General Public License Version 3` 及此条注意事项而产生的任何后果自负，模块的所有贡献者不负任何责任。**
-
-开发文档: [bilibili_api 开发文档][docs] ([GitHub][docs-github])
-
-原仓库地址：[https://github.com/MoyuScript/bilibili-api](https://github.com/MoyuScript/bilibili-api) (*现已被删除)
-
-Github 仓库：[https://github.com/nemo2011/bilibili-api](https://github.com/nemo2011/bilibili-api)
-
-> 模块最早由 @MoyuScript 于 2020 年创建，于 2022 年宣布停止维护。本仓库是原仓库 fork，遵循 `GNU General Public License Version 3`。在此感谢早期的众多模块贡献者与 @MoyuScript 对新仓库的支持。
-> 见 `MoyuScript/bilibili-api` 的 [第一条 commit (2020.01.27)](https://github.com/Nemo2011/bilibili-api/commit/8dc3f9a05fa28ed9b060cafa6d5c23131a28a113)与 [最后一条 commit (2022.01.17)](https://github.com/Nemo2011/bilibili-api/commit/dc518016c7649be2a135ccb8badb091712754a3d)。
-
-# 简介
-
-这是一个用 Python 写的调用 [Bilibili](https://www.bilibili.com) 各种 API 的库，
-范围涵盖视频、音频、直播、动态、专栏、用户、番剧等[[1]](#脚注)。
-
-## 特色
-
-- 范围涵盖广，基本覆盖常用的爬虫，操作。
-- 可使用代理，绕过 b 站风控策略。
-- 全面支持 BV 号（bvid），同时也兼容 AV 号（aid）。
-- 调用简便，函数命名易懂，代码注释详细。
-- 不仅仅是官方提供的 API！还附加：AV 号与 BV 号互转[[2]](#脚注)、连接直播弹幕 Websocket 服务器、视频弹幕反查、下载弹幕、字幕文件[[3]](#脚注)、专栏内容爬取、cookies 刷新等[[4]](#脚注)。
-- 支持采用各种手段避免触发反爬虫风控[[5]](#脚注)。
-- **全部是异步操作**。
-- 默认支持 `aiohttp` / `httpx` / `curl_cffi`。
-
-# 快速上手
-
-首先使用以下指令安装本模块：
-
-```
-# 主版本
-$ pip3 install bilibili-api-python
-
-# 开发版本
-$ pip3 install bilibili-api-dev
-
-# 最新修改会在 dev 分支
-$ pip3 install git+https://github.com/Nemo2011/bilibili-api.git@dev
+```bash
+pip install curl_cffi qrcode qrcode-terminal
 ```
 
-然后需要**自行安装**一个支持异步的第三方请求库，如 `aiohttp` / `httpx` / `curl_cffi`。
+## 快速开始
 
-```
-# aiohttp
-$ pip3 install aiohttp
-
-# httpx
-$ pip3 install httpx
-
-# curl_cffi
-$ pip3 install "curl_cffi"
-```
-
-接下来我们来获取视频的播放量等信息：
+### 1. 登录
 
 ```python
 import asyncio
-from bilibili_api import video
+from minimal_bilibili_api import login_with_qr
 
-
-async def main() -> None:
-    # 实例化 Video 类
-    v = video.Video(bvid="BV1uv411q7Mv")
-    # 获取信息
-    info = await v.get_info()
-    # 打印信息
-    print(info)
-
+async def main():
+    # 二维码登录
+    credential = await login_with_qr()
+    print("登录成功!")
 
 if __name__ == "__main__":
     asyncio.run(main())
-
 ```
 
-输出（已格式化，已省略部分）：
-
-```json
-{
-    "bvid": "BV1uv411q7Mv",
-    "aid": 243922477,
-    "videos": 1,
-    "tid": 17,
-    "tname": "单机游戏",
-    "copyright": 1,
-    "pic": "http://i2.hdslb.com/bfs/archive/82e52df9d0221836c260c82f2890e3761a46716b.jpg",
-    "title": "爆肝９８小时！在 MC 中还原糖调小镇",
-    "pubdate": 1595203214,
-    "ctime": 1595168654,
-    ...and more
-}
-```
-
-如何给这个视频点赞？我们需要登录自己的账号。
-
-这里设计是传入一个 Credential 类，获取所需的信息参照：[获取 Credential 类所需信息][get-credential]
-
-下面的代码将会给视频点赞
+### 2. 获取收藏夹
 
 ```python
-import asyncio
-from bilibili_api import video, Credential
+from minimal_bilibili_api import FavoriteList, get_video_favorite_list
 
-async def main() -> None:
-    # 实例化 Credential 类
-    credential = Credential(sessdata=SESSDATA, bili_jct=BILI_JCT, buvid3=BUVID3)
-    # 实例化 Video 类
-    v = video.Video(bvid="BVxxxxxxxx", credential=credential)
-    info = await v.get_info()
-    print(info)
-    # 给视频点赞
-    await v.like(True)
-
-if __name__ == '__main__':
-    asyncio.run(main())
+async def get_favorites():
+    # 获取用户收藏夹列表
+    fav_list = await get_video_favorite_list(uid=123456)
+    
+    # 获取特定收藏夹内容
+    fav = FavoriteList(media_id=12345, credential=credential)
+    info = await fav.get_info()  # 收藏夹信息
+    content = await fav.get_content()  # 收藏夹内容
 ```
 
-如果没有报错，就代表调用 API 成功，你可以到视频页面确认是不是调用成功了。
-
-> **Warning** 注意，请不要泄露这两个值给他人，否则你的账号将可能遭受盗号的风险！
-
-# 异步迁移
-
-由于从 v5 版本开始，基本全部改为异步，如果你不会异步，可以参考 [asyncio](https://docs.python.org/zh-cn/3/library/asyncio.html)
-
-异步可以进行并发请求，性能更高，不过如果请求过快仍然会导致被屏蔽。
-
-总的来说，异步比同步更有优势，所以不会的话可以去学一下，会发现新天地（误
-
-如果你仍然想继续使用同步代码，请参考 [同步执行异步代码](https://nemo2011.github.io/bilibili-api/#/sync-executor)
-
-# 模块使用的请求库
-
-模块在允许的条件下，按照 `curl_cffi` `aiohttp` `httpx` 的优先级选择第三方请求库。
-
-如果想要指定请求库，可以利用 `select_client` 进行切换。
-
-``` python
-from bilibili_api import select_client
-
-select_client("curl_cffi") # 选择 curl_cffi，支持伪装浏览器的 TLS / JA3 / Fingerprint
-select_client("aiohttp") # 选择 aiohttp
-select_client("httpx") # 选择 httpx，不支持 WebSocket
-```
-
-curl_cffi 支持伪装浏览器的 TLS / JA3 / Fingerprint，但需要手动设置。
-
-``` python
-from bilibili_api import request_settings
-
-request_settings.set("impersonate", "chrome131") # 第二参数数值参考 curl_cffi 文档
-# https://curl-cffi.readthedocs.io/en/latest/impersonate.html
-```
-
-# FA♂Q
-
-**Q: 关于 API 调用的正确姿势是什么？**
-
-A: 所有 API 调用，请尽量使用 **指名方式** 传参，
-因为 API 较多，可能不同函数的传参顺序不一样，例子：
+### 3. 音频下载
 
 ```python
-# 推荐
-video.get_info(bvid="BV1uv411q7Mv")
+from minimal_bilibili_api import Audio, get_audio_download_url
 
-# 当然也可以这样
-kwargs = {
-    "bvid": "BV1uv411q7Mv"
-}
-video.get_info(**kwargs)
-
-# 不推荐
-video.get_info("BV1uv411q7Mv")
+async def download_audio():
+    # 方式1: 使用 Audio 类
+    audio = Audio(auid=12345, credential=credential)
+    info = await audio.get_info()
+    download_info = await audio.get_download_url()
+    
+    # 方式2: 直接获取下载链接
+    download_info = await get_audio_download_url(auid=12345)
 ```
 
-**Q: 为什么会提示 412 Precondition Failed ？**
-
-A: 你的请求速度太快了。造成请求速度过快的原因可能是你写了高并发的代码。
-
-这种情况下，你的 IP 会暂时被封禁而无法使用，你可以设置代理绕过。
+### 4. 获取视频标题
 
 ```python
-from bilibili_api import request_settings
+from minimal_bilibili_api import Video, get_video_title
 
-request_settings.set_proxy("http://your-proxy.com") # 里头填写你的代理地址
-
-request_settings.set_proxy("http://username:password@your-proxy.com") # 如果需要用户名、密码
+async def get_title():
+    # 方式1: 使用 Video 类
+    video = Video(bvid="BV1xx411c7mu", credential=credential)
+    title = await video.get_title()
+    
+    # 方式2: 直接获取标题
+    title = await get_video_title(bvid="BV1xx411c7mu")
 ```
 
-**Q: 我想在项目中使用这个模块，但是我的项目使用其他请求库进行网络请求（如 `pycurl`），想要模块也同时使用它（们），可以吗？**
+## API 文档
 
-A: 可以，但是你可能要自己动手实现模块和具体请求库的适配。详见 [自定义请求库](https://nemo2011.github.io/bilibili-api/#/request_client)
+### 登录模块
 
-**Q: 怎么没有我想要的功能？**
+#### `login_with_qr()`
+二维码登录，返回 Credential 对象
 
-A: 你可以发 Issue 来提交你的需求，但是，最好的办法是自己写（懒）
+### 收藏夹模块
 
-<span id="contribute">**Q: 我有一个大胆的想法，如何给代码库贡献？**</span>
+#### `FavoriteList`
+- `get_info()` - 获取收藏夹信息
+- `get_content()` - 获取收藏夹内容
 
-A: 请先 clone 本仓库一份，然后从 main 分支新建一个分支，在该分支上工作。
-如果你觉得已经可以了，请向项目仓库的 develop 分支发起 Pull request。
-如果你不明白这些操作的话，可以百度。完整指南：[CONTRIBUTING.md](https://github.com/nemo2011/bilibili-api/blob/main/.github/CONTRIBUTING.md)
+#### `get_video_favorite_list(uid)`
+获取用户的所有收藏夹列表
 
-**Q: 稳定性怎么样？**
+#### `get_video_favorite_list_content(media_id)`
+获取指定收藏夹的内容
 
-A: 由于该模块比较特殊，是爬虫模块，如果 b 站的接口变更，可能会马上失效。因此请始终保证是最新版本。如果发现问题可以提 [Issues][issues-new]。
+### 音频模块
 
-# 脚注
+#### `Audio`
+- `get_info()` - 获取音频信息
+- `get_download_url()` - 获取音频下载链接
 
-- \[1\] 这里只列出一部分，请以实际 API 为准。
-- \[2\] 代码来源：<https://www.zhihu.com/question/381784377/answer/1099438784> (WTFPL)
-- \[3\] 部分代码来源：<https://github.com/m13253/danmaku2ass> (GPLv3) <https://github.com/ewwink/python-srt2ass>
-- \[4\] 思路来源：<https://socialsisteryi.github.io/bilibili-API-collect/docs/login/cookie_refresh.html> (CC-BY-NC 4.0)
-- \[5\] 大量思路来源 <https://github.com/SocialSisterYi/bilibili-API-collect> 中相关讨论。
+#### `get_audio_download_url(auid)`
+直接获取音频下载链接
 
-[docs]: https://nemo2011.github.io/bilibili-api
-[docs-github]: https://github.com/nemo2011/bilibili-api/tree/main/docs
-[api.json]: https://github.com/nemo2011/bilibili-api/tree/main/bilibili_api/data/api/
-[license]: https://github.com/nemo2011/bilibili-api/tree/main/LICENSE
-[stargazers]: https://github.com/nemo2011/bilibili-api/stargazers
-[issues-new]: https://github.com/Nemo2011/bilibili-api/issues/new/choose
-[get-credential]: https://nemo2011.github.io/bilibili-api/#/get-credential
-[pypi]: https://pypi.org/project/bilibili-api-python
-[pypi-dev]: https://pypi.org/project/bilibili-api-dev
+### 视频模块
 
-# Star History
+#### `Video`
+- `get_info()` - 获取视频完整信息
+- `get_title()` - 获取视频标题
 
-[![Star History Chart](https://api.star-history.com/svg?repos=Nemo2011/bilibili-api&type=Date)](https://star-history.com/#Nemo2011/bilibili-api&Date)
+#### `get_video_title(bvid/aid)`
+直接获取视频标题
+
+## 凭据管理
+
+```python
+from minimal_bilibili_api import Credential
+
+# 创建凭据
+cred = Credential(
+    sessdata="your_sessdata",
+    bili_jct="your_bili_jct", 
+    dedeuserid="your_dedeuserid"
+)
+
+# 检查凭据完整性
+cred.raise_for_no_sessdata()  # 检查是否有 sessdata
+cred.raise_for_no_bili_jct()  # 检查是否有 bili_jct
+```
+
+## 注意事项
+
+1. 本库仅保留了最核心的功能
+2. 只支持 curl_cffi 作为网络客户端
+3. 部分高级功能已被移除
+4. 建议使用二维码登录方式
