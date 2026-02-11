@@ -21,7 +21,7 @@ async def demo_login():
     try:
         # 使用 QRCodeLogin 类的异步方法
         login_instance = QRCodeLogin()
-        credential = await login_instance.login()
+        credential = await login_instance.auto_login()
         print("✅ 登录成功!")
         print(f"SESSDATA: {credential.sessdata[:10]}...")
         print(f"DedeUserID: {credential.dedeuserid}")
