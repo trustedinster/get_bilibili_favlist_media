@@ -6,7 +6,7 @@ Minimal Bilibili API 示例脚本
 import asyncio
 import json
 from minimal_bilibili_api import (
-    login_with_qr,
+    QRCodeLogin,
     FavoriteList,
     get_video_favorite_list,
     Audio,
@@ -17,11 +17,11 @@ from minimal_bilibili_api import (
 
 
 async def demo_login():
-    """演示登录功能"""
-    print("=== 二维码登录演示 ===")
+    """演示异步登录方式"""
     try:
-        # 使用无限等待模式
-        credential = await login_with_qr(wait_forever=True)
+        # 使用 QRCodeLogin 类的异步方法
+        login_instance = QRCodeLogin()
+        credential = await login_instance.login()
         print("✅ 登录成功!")
         print(f"SESSDATA: {credential.sessdata[:10]}...")
         print(f"DedeUserID: {credential.dedeuserid}")
@@ -39,20 +39,20 @@ async def demo_favorite_list(credential):
         fav_list = await get_video_favorite_list(uid=int(credential.dedeuserid), credential=credential)
         print("✅ 获取收藏夹列表成功")
         print(f"收藏夹数量: {len(fav_list.get('data', {}).get('list', []))}")
-        
+
         # 获取第一个收藏夹的内容
         if fav_list.get('data', {}).get('list'):
             first_fav = fav_list['data']['list'][0]
             fav = FavoriteList(media_id=first_fav['id'], credential=credential)
-            
+
             # 获取收藏夹信息
             info = await fav.get_info()
             print(f"收藏夹名称: {info.get('data', {}).get('title', '')}")
-            
+
             # 获取收藏夹内容
             content = await fav.get_content()
             print(f"收藏内容数量: {len(content.get('data', {}).get('medias', []))}")
-            
+
     except Exception as e:
         print(f"❌ 收藏夹操作失败: {e}")
 
@@ -86,21 +86,21 @@ async def main():
     """主函数"""
     print("🚀 Minimal Bilibili API 演示程序")
     print("=" * 50)
-    
-    # 1. 登录
+
+    # 1. 演示进行登录
     credential = await demo_login()
     if not credential:
         return
-    
+
     # 2. 收藏夹功能
     await demo_favorite_list(credential)
-    
+
     # 3. 音频功能
     await demo_audio(credential)
-    
+
     # 4. 视频功能
     await demo_video(credential)
-    
+
     print("\n🎉 演示完成!")
 
 
