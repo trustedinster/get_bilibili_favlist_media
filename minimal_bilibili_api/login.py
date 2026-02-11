@@ -124,18 +124,19 @@ class QRCodeLogin:
             dedeuserid=dedeuserid,
             ac_time_value=ac_time_value
         )
+    async def auto_login(self):
+        # 生成并显示二维码
+        qr_link = await self.generate_qr_code()
+        self.display_qr_code(qr_link)
+        return await self.login(qr_link=qr_link)
 
-    async def login(self) -> Credential:
+    async def login(self, qr_link: str = None) -> Credential:
         """
         执行登录流程
 
         Returns:
             Credential: 登录凭据
         """
-        # 生成并显示二维码
-        qr_link = await self.generate_qr_code()
-        self.display_qr_code(qr_link)
-
         # 轮询检查登录状态
         max_attempts = float('inf') if self.wait_forever else 100
         attempt = 0
