@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac910747-9bc8-4a44-a352-d0a11d58dc51" name="更改" comment="refactor(login): 将二维码登录功能重构为面向对象实现&#10;&#10;- 将原来的 login_with_qr 函数转换为 QRCodeLogin 类&#10;- 拆分登录逻辑为独立的方法：generate_qr_code、display_qr_code、check_login_status&#10;- 添加 parse_credential 方法用于解析登录凭据&#10;- 修改 demo.py 中的登录调用方式，使用 QRCodeLogin 类实例&#10;- 更新 __init__.py 中的导出模块，替换函数名为类名&#10;- 保持向后兼容的登录流程和错误处理机制">
+    <list default="true" id="ac910747-9bc8-4a44-a352-d0a11d58dc51" name="更改" comment="refactor(login): 更新登录方法调用&#10;&#10;- 将 login() 方法替换为 auto_login() 方法&#10;- 保持原有的异步登录流程不变&#10;- 更新演示代码中的方法引用">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minimal_bilibili_api/login.py" beforeDir="false" afterPath="$PROJECT_DIR$/minimal_bilibili_api/login.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +107,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1770733472117</updated>
-      <workItem from="1770733473455" duration="6829000" />
+      <workItem from="1770733473455" duration="7442000" />
     </task>
     <task id="LOCAL-00001" summary="refactor(core): 重构项目结构为精简版本&#10;&#10;- 移除 docs 目录下的 .gitignore 文件&#10;- 删除 clients 子包及其初始化文件&#10;- 移除 exceptions 包及相关异常定义&#10;- 删除 tools/ivitools 和 tools/parser 工具模块&#10;- 移除主包的初始化文件及全部子模块导入&#10;- 清理测试目录的初始化和主执行文件&#10;- 删除活动、相簿等相关 API 定义和实现&#10;- 移除 aid/bvid 转换工具和客户端实现&#10;- 新增 minimal_bilibili_api 包结构&#10;- 实现精简版核心功能包括登录、收藏夹、音视频等模块">
       <option name="closed" value="true" />
@@ -134,7 +133,23 @@
       <option name="project" value="LOCAL" />
       <updated>1770804264279</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="refactor(login): 将二维码登录功能重构为面向对象实现&#10;&#10;- 将原来的 login_with_qr 函数转换为 QRCodeLogin 类&#10;- 拆分登录逻辑为独立的方法：generate_qr_code、display_qr_code、check_login_status&#10;- 添加 parse_credential 方法用于解析登录凭据&#10;- 修改 demo.py 中的登录调用方式，使用 QRCodeLogin 类实例&#10;- 更新 __init__.py 中的导出模块，替换函数名为类名&#10;- 保持向后兼容的登录流程和错误处理机制">
+      <option name="closed" value="true" />
+      <created>1770804903895</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1770804903895</updated>
+    </task>
+    <task id="LOCAL-00005" summary="refactor(login): 更新登录方法调用&#10;&#10;- 将 login() 方法替换为 auto_login() 方法&#10;- 保持原有的异步登录流程不变&#10;- 更新演示代码中的方法引用">
+      <option name="closed" value="true" />
+      <created>1770804953360</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1770804953360</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -174,7 +189,8 @@
     <MESSAGE value="refactor(core): 重构项目结构为精简版本&#10;&#10;- 移除 docs 目录下的 .gitignore 文件&#10;- 删除 clients 子包及其初始化文件&#10;- 移除 exceptions 包及相关异常定义&#10;- 删除 tools/ivitools 和 tools/parser 工具模块&#10;- 移除主包的初始化文件及全部子模块导入&#10;- 清理测试目录的初始化和主执行文件&#10;- 删除活动、相簿等相关 API 定义和实现&#10;- 移除 aid/bvid 转换工具和客户端实现&#10;- 新增 minimal_bilibili_api 包结构&#10;- 实现精简版核心功能包括登录、收藏夹、音视频等模块" />
     <MESSAGE value="feat(api): 添加多个API接口定义文件&#10;&#10;- 新增音频相关API接口定义 (audio.json)&#10;- 新增收藏夹相关API接口定义 (favorite-list.json)&#10;- 新增登录二维码相关API接口定义 (login.json)&#10;- 新增视频信息相关API接口定义 (video.json)&#10;- 更新.gitignore文件以优化忽略规则" />
     <MESSAGE value="refactor(login): 将二维码登录功能重构为面向对象实现&#10;&#10;- 将原来的 login_with_qr 函数转换为 QRCodeLogin 类&#10;- 拆分登录逻辑为独立的方法：generate_qr_code、display_qr_code、check_login_status&#10;- 添加 parse_credential 方法用于解析登录凭据&#10;- 修改 demo.py 中的登录调用方式，使用 QRCodeLogin 类实例&#10;- 更新 __init__.py 中的导出模块，替换函数名为类名&#10;- 保持向后兼容的登录流程和错误处理机制" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor(login): 将二维码登录功能重构为面向对象实现&#10;&#10;- 将原来的 login_with_qr 函数转换为 QRCodeLogin 类&#10;- 拆分登录逻辑为独立的方法：generate_qr_code、display_qr_code、check_login_status&#10;- 添加 parse_credential 方法用于解析登录凭据&#10;- 修改 demo.py 中的登录调用方式，使用 QRCodeLogin 类实例&#10;- 更新 __init__.py 中的导出模块，替换函数名为类名&#10;- 保持向后兼容的登录流程和错误处理机制" />
+    <MESSAGE value="refactor(login): 更新登录方法调用&#10;&#10;- 将 login() 方法替换为 auto_login() 方法&#10;- 保持原有的异步登录流程不变&#10;- 更新演示代码中的方法引用" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor(login): 更新登录方法调用&#10;&#10;- 将 login() 方法替换为 auto_login() 方法&#10;- 保持原有的异步登录流程不变&#10;- 更新演示代码中的方法引用" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/get_bilibili_favlist_media$demo.coverage" NAME="demo 覆盖结果" MODIFIED="1770804407653" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/minimal_bilibili_api" />

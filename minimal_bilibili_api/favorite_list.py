@@ -39,13 +39,13 @@ class FavoriteList:
     async def get_info(self) -> dict:
         """
         获取收藏夹信息
-        
+
         Returns:
             dict: 收藏夹信息
         """
         api = API["info"]["info"]
         params = {"media_id": self.media_id}
-        return await Api(**api, credential=self.credential).update_params(**params).result
+        return await Api(**api, credential=self.credential).update_params(**params).result()
 
     async def get_content(
         self,
@@ -55,12 +55,12 @@ class FavoriteList:
     ) -> dict:
         """
         获取收藏夹内容
-        
+
         Args:
             page (int): 页码
             keyword (str): 搜索关键词
             order (FavoriteListContentOrder): 排序方式
-            
+
         Returns:
             dict: 收藏夹内容
         """
@@ -79,17 +79,17 @@ async def get_video_favorite_list(
 ) -> dict:
     """
     获取用户的视频收藏夹列表
-    
+
     Args:
         uid (int): 用户 UID
         credential (Credential): 凭据
-        
+
     Returns:
         dict: 收藏夹列表
     """
     api = API["info"]["list_list"]
     params = {"up_mid": uid, "type": 2}
-    return await Api(**api, credential=credential).update_params(**params).result
+    return await Api(**api, credential=credential).update_params(**params).result()
 
 
 async def get_video_favorite_list_content(
@@ -101,14 +101,14 @@ async def get_video_favorite_list_content(
 ) -> dict:
     """
     获取视频收藏夹内容
-    
+
     Args:
         media_id (int): 收藏夹 ID
         page (int): 页码
         keyword (str): 搜索关键词
         order (FavoriteListContentOrder): 排序方式
         credential (Credential): 凭据
-        
+
     Returns:
         dict: 收藏夹内容
     """
@@ -121,8 +121,8 @@ async def get_video_favorite_list_content(
         "type": 0,
         "tid": 0
     }
-    
+
     if keyword:
         params["keyword"] = keyword
-        
-    return await Api(**api, credential=credential).update_params(**params).result
+
+    return await Api(**api, credential=credential).update_params(**params).result()
