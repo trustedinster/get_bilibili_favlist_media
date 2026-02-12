@@ -14,6 +14,81 @@ from dataclasses import dataclass
 from curl_cffi import requests
 
 
+# 默认请求头
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0",
+    "Referer": "https://www.bilibili.com/",
+}
+
+
+class DownloadClient:
+    """
+    简化的下载客户端
+    """
+    def __init__(self):
+        self.downloads = {}
+        self.download_cnt = 0
+        
+    async def download_create(self, url: str, headers: dict = None) -> int:
+        """
+        创建下载任务
+        """
+        if headers is None:
+            headers = HEADERS.copy()
+        
+        self.download_cnt += 1
+        session = requests.AsyncSession()
+        resp = await session.get(url, headers=headers)
+        self.downloads[self.download_cnt] = {
+            "response": resp,
+            "session": session,
+            "content_iter": resp.aiter_bytes()
+        }
+        return self.download_cnt
+    
+    async def download_chunk(self, cnt: int) -> bytes:
+        """
+        下载数据块
+        """
+        download_info = self.downloads[cnt]
+        try:
+            # 使用传统的异步迭代方式
+            chunk = await download_info["content_iter"].__anext__()
+            return chunk
+        except StopAsyncIteration:
+            return b""
+    
+    def download_content_length(self, cnt: int) -> int:
+        """
+        获取下载内容总长度
+        """
+        resp = self.downloads[cnt]["response"]
+        return int(resp.headers.get("content-length", "0"))
+    
+    async def download_close(self, cnt: int) -> None:
+        """
+        关闭下载连接
+        """
+        download_info = self.downloads[cnt]
+        await download_info["session"].close()
+        del self.downloads[cnt]
+
+
+def get_client() -> DownloadClient:
+    """
+    获取下载客户端实例
+    """
+    # 使用全局单例
+    global _download_client
+    if _download_client is None:
+        _download_client = DownloadClient()
+    return _download_client
+
+
+# 全局下载客户端实例
+_download_client = None
+
+
 @dataclass
 class Credential:
     """

@@ -29,7 +29,7 @@ class Audio:
     async def get_info(self) -> dict:
         """
         获取音频信息
-        
+
         Returns:
             dict: 音频信息
         """
@@ -40,23 +40,23 @@ class Audio:
     async def get_download_url(self) -> dict:
         """
         获取音频下载链接
-        
+
         Returns:
             dict: 下载链接信息
         """
         api = API["audio_info"]["download_url"]
         params = {"sid": self.auid, "privilege": 2, "quality": 2}
-        return await Api(**api, credential=self.credential).update_params(**params).result
+        return await Api(**api, credential=self.credential).update_params(**params).result()
 
 
 async def get_audio_download_url(auid: int, credential: Credential = None) -> dict:
     """
     获取音频下载链接
-    
+
     Args:
         auid (int): 音频 AU 号
         credential (Credential): 凭据
-        
+
     Returns:
         dict: 下载链接信息
     """

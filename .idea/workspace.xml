@@ -4,8 +4,172 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac910747-9bc8-4a44-a352-d0a11d58dc51" name="更改" comment="refactor(login): 更新登录方法调用&#10;&#10;- 将 login() 方法替换为 auto_login() 方法&#10;- 保持原有的异步登录流程不变&#10;- 更新演示代码中的方法引用">
+    <list default="true" id="ac910747-9bc8-4a44-a352-d0a11d58dc51" name="更改" comment="refactor(favorite_list): 修复API调用方法调用问题&#10;&#10;- 修复get_info方法中的result调用，添加括号&#10;- 修复get_user_video_favorite_list方法中的result调用，添加括号&#10;- 修复get_video_favorite_list_content方法中的result调用，添加括号&#10;- 清理代码中的多余空行和空格&#10;- 更新workspace.xml中的提交历史记录">
+      <change afterPath="$PROJECT_DIR$/bilibili_api/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/_pyinstaller/entry_points.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/_pyinstaller/hook-bilibili_api.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/activity.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/app.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/article.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/article_category.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/ass.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/audio.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/audio_uploader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/bangumi.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/black_room.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/channel_series.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/cheese.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/client.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/clients/AioHTTPClient.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/clients/CurlCFFIClient.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/clients/HTTPXClient.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/clients/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/comment.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/creative_center.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/activity.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/album.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/app.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/article-category.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/article.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/audio.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/audio_uploader.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/bangumi.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/black-room.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/channel-series.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/cheese.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/client.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/common.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/creative_center.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/credential.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/dynamic.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/emoji.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/favorite-list.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/game.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/garb.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/homepage.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/hot.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/interactive_video.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/live-area.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/live.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/login.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/manga.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/music.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/note.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/opus.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/rank.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/search.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/session.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/show.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/topic.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/toview.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/user.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/video.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/video_tag.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/video_uploader.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/video_zone.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/vote.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/api/watchroom.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/appeal.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/article_category.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/audio_search_tags.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/bangumi_index_params.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/countries_codes.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/geetest/captcha.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/geetest/done.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/geetest/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/subtitle_lan.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/video_uploader_lines.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/video_uploader_meta_pre.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/data/video_zone.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/dynamic.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/emoji.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/exceptions/ApiException.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/exceptions/ArgsException.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/exceptions/CookiesRefreshException.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/exceptions/CredentialNoAcTimeValueException.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/exceptions/CredentialNoBiliJctException.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/exceptions/CredentialNoBuvid3Exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/exceptions/CredentialNoBuvid4Exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/exceptions/CredentialNoDedeUserIDException.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/exceptions/CredentialNoSessdataException.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/exceptions/DanmakuClosedException.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/exceptions/DynamicExceedImagesException.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/exceptions/ExClimbWuzhiException.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/exceptions/GeetestException.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/exceptions/InitialStateException.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/exceptions/LiveException.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/exceptions/LoginError.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/exceptions/NetworkException.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/exceptions/ResponseCodeException.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/exceptions/ResponseException.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/exceptions/StatementException.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/exceptions/VideoUploadException.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/exceptions/WbiRetryTimesExceedException.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/exceptions/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/favorite_list.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/festival.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/game.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/garb.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/homepage.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/hot.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/interactive_video.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/live.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/live_area.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/login_v2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/manga.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/music.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/note.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/opus.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/py.typed" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/rank.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/search.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/session.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/show.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/tools/ivitools/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/tools/ivitools/__main__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/tools/ivitools/download.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/tools/ivitools/extract.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/tools/ivitools/player.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/tools/ivitools/touch.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/tools/parser/Card.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/tools/parser/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/tools/parser/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/tools/parser/app.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/tools/parser/parser.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/topic.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/user.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/utils/AsyncEvent.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/utils/BytesReader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/utils/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/utils/aid_bvid_transformer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/utils/cache_pool.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/utils/danmaku.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/utils/danmaku2ass.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/utils/geetest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/utils/initial_state.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/utils/network.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/utils/parse_link.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/utils/picture.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/utils/short.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/utils/srt2ass.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/utils/sync.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/utils/upos.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/utils/user_render_data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/utils/utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/utils/varint.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/video.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/video_tag.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/video_uploader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/video_zone.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/vote.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bilibili_api/watchroom.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minimal_bilibili_api/utils/aid_bvid_transformer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minimal_bilibili_api/audio.py" beforeDir="false" afterPath="$PROJECT_DIR$/minimal_bilibili_api/audio.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minimal_bilibili_api/demo.py" beforeDir="false" afterPath="$PROJECT_DIR$/minimal_bilibili_api/demo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minimal_bilibili_api/utils/network.py" beforeDir="false" afterPath="$PROJECT_DIR$/minimal_bilibili_api/utils/network.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minimal_bilibili_api/video.py" beforeDir="false" afterPath="$PROJECT_DIR$/minimal_bilibili_api/video.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +271,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1770733472117</updated>
-      <workItem from="1770733473455" duration="7442000" />
+      <workItem from="1770733473455" duration="10594000" />
     </task>
     <task id="LOCAL-00001" summary="refactor(core): 重构项目结构为精简版本&#10;&#10;- 移除 docs 目录下的 .gitignore 文件&#10;- 删除 clients 子包及其初始化文件&#10;- 移除 exceptions 包及相关异常定义&#10;- 删除 tools/ivitools 和 tools/parser 工具模块&#10;- 移除主包的初始化文件及全部子模块导入&#10;- 清理测试目录的初始化和主执行文件&#10;- 删除活动、相簿等相关 API 定义和实现&#10;- 移除 aid/bvid 转换工具和客户端实现&#10;- 新增 minimal_bilibili_api 包结构&#10;- 实现精简版核心功能包括登录、收藏夹、音视频等模块">
       <option name="closed" value="true" />
@@ -149,7 +313,15 @@
       <option name="project" value="LOCAL" />
       <updated>1770804953360</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="refactor(favorite_list): 修复API调用方法调用问题&#10;&#10;- 修复get_info方法中的result调用，添加括号&#10;- 修复get_user_video_favorite_list方法中的result调用，添加括号&#10;- 修复get_video_favorite_list_content方法中的result调用，添加括号&#10;- 清理代码中的多余空行和空格&#10;- 更新workspace.xml中的提交历史记录">
+      <option name="closed" value="true" />
+      <created>1770805642976</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1770805642976</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -170,13 +342,6 @@
                       </list>
                     </value>
                   </entry>
-                  <entry key="text">
-                    <value>
-                      <list>
-                        <option value="LICENSE" />
-                      </list>
-                    </value>
-                  </entry>
                 </map>
               </option>
             </State>
@@ -190,9 +355,10 @@
     <MESSAGE value="feat(api): 添加多个API接口定义文件&#10;&#10;- 新增音频相关API接口定义 (audio.json)&#10;- 新增收藏夹相关API接口定义 (favorite-list.json)&#10;- 新增登录二维码相关API接口定义 (login.json)&#10;- 新增视频信息相关API接口定义 (video.json)&#10;- 更新.gitignore文件以优化忽略规则" />
     <MESSAGE value="refactor(login): 将二维码登录功能重构为面向对象实现&#10;&#10;- 将原来的 login_with_qr 函数转换为 QRCodeLogin 类&#10;- 拆分登录逻辑为独立的方法：generate_qr_code、display_qr_code、check_login_status&#10;- 添加 parse_credential 方法用于解析登录凭据&#10;- 修改 demo.py 中的登录调用方式，使用 QRCodeLogin 类实例&#10;- 更新 __init__.py 中的导出模块，替换函数名为类名&#10;- 保持向后兼容的登录流程和错误处理机制" />
     <MESSAGE value="refactor(login): 更新登录方法调用&#10;&#10;- 将 login() 方法替换为 auto_login() 方法&#10;- 保持原有的异步登录流程不变&#10;- 更新演示代码中的方法引用" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor(login): 更新登录方法调用&#10;&#10;- 将 login() 方法替换为 auto_login() 方法&#10;- 保持原有的异步登录流程不变&#10;- 更新演示代码中的方法引用" />
+    <MESSAGE value="refactor(favorite_list): 修复API调用方法调用问题&#10;&#10;- 修复get_info方法中的result调用，添加括号&#10;- 修复get_user_video_favorite_list方法中的result调用，添加括号&#10;- 修复get_video_favorite_list_content方法中的result调用，添加括号&#10;- 清理代码中的多余空行和空格&#10;- 更新workspace.xml中的提交历史记录" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor(favorite_list): 修复API调用方法调用问题&#10;&#10;- 修复get_info方法中的result调用，添加括号&#10;- 修复get_user_video_favorite_list方法中的result调用，添加括号&#10;- 修复get_video_favorite_list_content方法中的result调用，添加括号&#10;- 清理代码中的多余空行和空格&#10;- 更新workspace.xml中的提交历史记录" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/get_bilibili_favlist_media$demo.coverage" NAME="demo 覆盖结果" MODIFIED="1770804407653" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/minimal_bilibili_api" />
+    <SUITE FILE_PATH="coverage/get_bilibili_favlist_media$demo.coverage" NAME="demo 覆盖结果" MODIFIED="1770808127941" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/minimal_bilibili_api" />
   </component>
 </project>
