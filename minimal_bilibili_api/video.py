@@ -24,6 +24,33 @@ class AudioQuality(Enum):
     _192K = 30280
     HI_RES = 30251
     DOLBY = 30255
+    
+    def __le__(self, other):
+        """支持 <= 比较操作"""
+        if isinstance(other, AudioQuality):
+            # 按照音质从低到高排序：64K < 132K < 192K < HI_RES < DOLBY
+            quality_order = [
+                AudioQuality._64K,
+                AudioQuality._132K, 
+                AudioQuality._192K,
+                AudioQuality.HI_RES,
+                AudioQuality.DOLBY
+            ]
+            return quality_order.index(self) <= quality_order.index(other)
+        return NotImplemented
+    
+    def __lt__(self, other):
+        """支持 < 比较操作"""
+        if isinstance(other, AudioQuality):
+            quality_order = [
+                AudioQuality._64K,
+                AudioQuality._132K,
+                AudioQuality._192K,
+                AudioQuality.HI_RES,
+                AudioQuality.DOLBY
+            ]
+            return quality_order.index(self) < quality_order.index(other)
+        return NotImplemented
 
 
 @dataclass

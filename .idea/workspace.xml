@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac910747-9bc8-4a44-a352-d0a11d58dc51" name="更改" comment="feat(favorite_list): 添加收藏夹音频批量下载功能&#10;&#10;- 在 FavoriteList 类中新增 download_all_audios 方法支持批量下载&#10;- 集成 ProgressCallback 进度回调机制提供下载状态反馈&#10;- 实现最大下载数量和音质参数配置选项&#10;- 添加下载目录自定义功能&#10;- 更新 README 文档增加使用示例和功能说明&#10;- 优化下载器集成和错误处理机制">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="ac910747-9bc8-4a44-a352-d0a11d58dc51" name="更改" comment="feat(downloader): 添加下载管理器和进度显示功能&#10;&#10;- 实现 Downloader 类支持单文件和批量下载功能&#10;- 添加 DownloadTask 数据类管理下载任务状态&#10;- 创建 ProgressCallback 回调机制提供下载进度反馈&#10;- 实现 VideoDownloader 视频专用下载器支持音频下载&#10;- 添加 FavoriteListDownloader 收藏夹批量下载功能&#10;- 创建 SimpleProgressDisplay 和 BatchProgressDisplay 进度显示组件&#10;- 提供便捷的进度回调创建函数和完成处理功能">
+      <change beforePath="$PROJECT_DIR$/minimal_bilibili_api/video.py" beforeDir="false" afterPath="$PROJECT_DIR$/minimal_bilibili_api/video.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,6 +136,7 @@
       <updated>1770733472117</updated>
       <workItem from="1770733473455" duration="15526000" />
       <workItem from="1770892146100" duration="2119000" />
+      <workItem from="1770895059732" duration="455000" />
     </task>
     <task id="LOCAL-00001" summary="refactor(core): 重构项目结构为精简版本&#10;&#10;- 移除 docs 目录下的 .gitignore 文件&#10;- 删除 clients 子包及其初始化文件&#10;- 移除 exceptions 包及相关异常定义&#10;- 删除 tools/ivitools 和 tools/parser 工具模块&#10;- 移除主包的初始化文件及全部子模块导入&#10;- 清理测试目录的初始化和主执行文件&#10;- 删除活动、相簿等相关 API 定义和实现&#10;- 移除 aid/bvid 转换工具和客户端实现&#10;- 新增 minimal_bilibili_api 包结构&#10;- 实现精简版核心功能包括登录、收藏夹、音视频等模块">
       <option name="closed" value="true" />
@@ -217,7 +218,15 @@
       <option name="project" value="LOCAL" />
       <updated>1770894326768</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="feat(downloader): 添加下载管理器和进度显示功能&#10;&#10;- 实现 Downloader 类支持单文件和批量下载功能&#10;- 添加 DownloadTask 数据类管理下载任务状态&#10;- 创建 ProgressCallback 回调机制提供下载进度反馈&#10;- 实现 VideoDownloader 视频专用下载器支持音频下载&#10;- 添加 FavoriteListDownloader 收藏夹批量下载功能&#10;- 创建 SimpleProgressDisplay 和 BatchProgressDisplay 进度显示组件&#10;- 提供便捷的进度回调创建函数和完成处理功能">
+      <option name="closed" value="true" />
+      <created>1770895081587</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1770895081587</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -255,7 +264,8 @@
     <MESSAGE value="feat(video): 添加视频音频流处理功能&#10;&#10;- 新增 AV 号和 BV 号互转工具模块&#10;- 实现视频下载链接解析器支持 DASH 和 FLV 格式&#10;- 添加音频质量枚举和音频流数据类&#10;- 实现获取音频流列表和最佳音频流功能&#10;- 添加视频下载 URL 获取和音频下载功能&#10;- 扩展演示代码展示音频流功能&#10;- 添加网络下载客户端和默认请求头配置" />
     <MESSAGE value="feat(video): 添加视频音频流处理功能&#10;&#10;- 新增 AV 号和 BV 号互转工具模块&#10;- 实现视频下载链接解析器支持 DASH 和 FLV 格式&#10;- 添加音频质量枚举和音频流数据类&#10;- 实现获取音频流列表和最佳音频流功能&#10;- 添加视频下载 URL 获取和音频下载功能&#10;- 扩展演示代码展示音频流功能&#10;- 添加网络下载客户端和默认请求头配置&#10;- 移除旧的音频模块和相关 API 定义&#10;- 更新 API 接口定义支持视频页面和播放链接&#10;- 重构网络请求类构造方式并优化调用流程" />
     <MESSAGE value="feat(favorite_list): 添加收藏夹音频批量下载功能&#10;&#10;- 在 FavoriteList 类中新增 download_all_audios 方法支持批量下载&#10;- 集成 ProgressCallback 进度回调机制提供下载状态反馈&#10;- 实现最大下载数量和音质参数配置选项&#10;- 添加下载目录自定义功能&#10;- 更新 README 文档增加使用示例和功能说明&#10;- 优化下载器集成和错误处理机制" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(favorite_list): 添加收藏夹音频批量下载功能&#10;&#10;- 在 FavoriteList 类中新增 download_all_audios 方法支持批量下载&#10;- 集成 ProgressCallback 进度回调机制提供下载状态反馈&#10;- 实现最大下载数量和音质参数配置选项&#10;- 添加下载目录自定义功能&#10;- 更新 README 文档增加使用示例和功能说明&#10;- 优化下载器集成和错误处理机制" />
+    <MESSAGE value="feat(downloader): 添加下载管理器和进度显示功能&#10;&#10;- 实现 Downloader 类支持单文件和批量下载功能&#10;- 添加 DownloadTask 数据类管理下载任务状态&#10;- 创建 ProgressCallback 回调机制提供下载进度反馈&#10;- 实现 VideoDownloader 视频专用下载器支持音频下载&#10;- 添加 FavoriteListDownloader 收藏夹批量下载功能&#10;- 创建 SimpleProgressDisplay 和 BatchProgressDisplay 进度显示组件&#10;- 提供便捷的进度回调创建函数和完成处理功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(downloader): 添加下载管理器和进度显示功能&#10;&#10;- 实现 Downloader 类支持单文件和批量下载功能&#10;- 添加 DownloadTask 数据类管理下载任务状态&#10;- 创建 ProgressCallback 回调机制提供下载进度反馈&#10;- 实现 VideoDownloader 视频专用下载器支持音频下载&#10;- 添加 FavoriteListDownloader 收藏夹批量下载功能&#10;- 创建 SimpleProgressDisplay 和 BatchProgressDisplay 进度显示组件&#10;- 提供便捷的进度回调创建函数和完成处理功能" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/get_bilibili_favlist_media$demo.coverage" NAME="demo 覆盖结果" MODIFIED="1770891325532" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/minimal_bilibili_api" />
