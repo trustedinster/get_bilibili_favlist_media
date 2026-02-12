@@ -9,11 +9,9 @@ from minimal_bilibili_api import (
     QRCodeLogin,
     FavoriteList,
     get_video_favorite_list,
-    Audio,
-    get_audio_download_url,
     Video,
     get_video_title,
-Credential
+    Credential
 )
 
 
@@ -56,21 +54,6 @@ async def demo_favorite_list(credential):
 
     except Exception as e:
         print(f"❌ 收藏夹操作失败: {e}")
-
-
-async def demo_audio(credential):
-    """演示音频功能"""
-    print("\n=== 音频功能演示 ===")
-    try:
-        # 这里需要一个真实的音频 ID 来测试
-        # audio = Audio(auid=12345, credential=credential)
-        # info = await audio.get_info()
-        # download_url = await audio.get_download_url()
-        # print("✅ 音频功能测试通过")
-        print("💡 音频功能已实现，需要具体的音频 ID 来测试")
-    except Exception as e:
-        print(f"❌ 音频操作失败: {e}")
-
 
 async def demo_video(credential):
     """演示视频功能"""
