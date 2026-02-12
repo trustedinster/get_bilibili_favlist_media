@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac910747-9bc8-4a44-a352-d0a11d58dc51" name="更改" comment="feat(video): 添加视频音频流处理功能&#10;&#10;- 新增 AV 号和 BV 号互转工具模块&#10;- 实现视频下载链接解析器支持 DASH 和 FLV 格式&#10;- 添加音频质量枚举和音频流数据类&#10;- 实现获取音频流列表和最佳音频流功能&#10;- 添加视频下载 URL 获取和音频下载功能&#10;- 扩展演示代码展示音频流功能&#10;- 添加网络下载客户端和默认请求头配置&#10;- 移除旧的音频模块和相关 API 定义&#10;- 更新 API 接口定义支持视频页面和播放链接&#10;- 重构网络请求类构造方式并优化调用流程" />
+    <list default="true" id="ac910747-9bc8-4a44-a352-d0a11d58dc51" name="更改" comment="feat(video): 添加视频音频流处理功能&#10;&#10;- 新增 AV 号和 BV 号互转工具模块&#10;- 实现视频下载链接解析器支持 DASH 和 FLV 格式&#10;- 添加音频质量枚举和音频流数据类&#10;- 实现获取音频流列表和最佳音频流功能&#10;- 添加视频下载 URL 获取和音频下载功能&#10;- 扩展演示代码展示音频流功能&#10;- 添加网络下载客户端和默认请求头配置&#10;- 移除旧的音频模块和相关 API 定义&#10;- 更新 API 接口定义支持视频页面和播放链接&#10;- 重构网络请求类构造方式并优化调用流程">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minimal_bilibili_api/favorite_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/minimal_bilibili_api/favorite_list.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minimal_bilibili_api/video.py" beforeDir="false" afterPath="$PROJECT_DIR$/minimal_bilibili_api/video.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,28 +46,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.demo.executor&quot;: &quot;Run&quot;,
-    &quot;Python.test_official_audio.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.demo.executor": "Run",
+    "Python.test_official_audio.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.test_official_audio">
+  <component name="RunManager" selected="Python.demo">
     <configuration name="demo" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="get_bilibili_favlist_media" />
       <option name="ENV_FILES" value="" />
@@ -110,8 +117,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.test_official_audio" />
         <item itemvalue="Python.demo" />
+        <item itemvalue="Python.test_official_audio" />
       </list>
     </recent_temporary>
   </component>
@@ -130,7 +137,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1770733472117</updated>
-      <workItem from="1770733473455" duration="12998000" />
+      <workItem from="1770733473455" duration="15526000" />
+      <workItem from="1770892146100" duration="1462000" />
     </task>
     <task id="LOCAL-00001" summary="refactor(core): 重构项目结构为精简版本&#10;&#10;- 移除 docs 目录下的 .gitignore 文件&#10;- 删除 clients 子包及其初始化文件&#10;- 移除 exceptions 包及相关异常定义&#10;- 删除 tools/ivitools 和 tools/parser 工具模块&#10;- 移除主包的初始化文件及全部子模块导入&#10;- 清理测试目录的初始化和主执行文件&#10;- 删除活动、相簿等相关 API 定义和实现&#10;- 移除 aid/bvid 转换工具和客户端实现&#10;- 新增 minimal_bilibili_api 包结构&#10;- 实现精简版核心功能包括登录、收藏夹、音视频等模块">
       <option name="closed" value="true" />
@@ -196,7 +204,15 @@
       <option name="project" value="LOCAL" />
       <updated>1770888904783</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="feat(video): 添加视频音频流处理功能&#10;&#10;- 新增 AV 号和 BV 号互转工具模块&#10;- 实现视频下载链接解析器支持 DASH 和 FLV 格式&#10;- 添加音频质量枚举和音频流数据类&#10;- 实现获取音频流列表和最佳音频流功能&#10;- 添加视频下载 URL 获取和音频下载功能&#10;- 扩展演示代码展示音频流功能&#10;- 添加网络下载客户端和默认请求头配置&#10;- 移除旧的音频模块和相关 API 定义&#10;- 更新 API 接口定义支持视频页面和播放链接&#10;- 重构网络请求类构造方式并优化调用流程">
+      <option name="closed" value="true" />
+      <created>1770889103810</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1770889103810</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -236,7 +252,7 @@
     <option name="LAST_COMMIT_MESSAGE" value="feat(video): 添加视频音频流处理功能&#10;&#10;- 新增 AV 号和 BV 号互转工具模块&#10;- 实现视频下载链接解析器支持 DASH 和 FLV 格式&#10;- 添加音频质量枚举和音频流数据类&#10;- 实现获取音频流列表和最佳音频流功能&#10;- 添加视频下载 URL 获取和音频下载功能&#10;- 扩展演示代码展示音频流功能&#10;- 添加网络下载客户端和默认请求头配置&#10;- 移除旧的音频模块和相关 API 定义&#10;- 更新 API 接口定义支持视频页面和播放链接&#10;- 重构网络请求类构造方式并优化调用流程" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/get_bilibili_favlist_media$demo.coverage" NAME="demo 覆盖结果" MODIFIED="1770887281922" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/minimal_bilibili_api" />
-    <SUITE FILE_PATH="coverage/get_bilibili_favlist_media$test_official_audio.coverage" NAME="test_official_audio 覆盖结果" MODIFIED="1770888376972" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/get_bilibili_favlist_media$demo.coverage" NAME="demo 覆盖结果" MODIFIED="1770891325532" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/minimal_bilibili_api" />
+    <SUITE FILE_PATH="coverage/get_bilibili_favlist_media$test_official_audio.coverage" NAME="test_official_audio 覆盖结果" MODIFIED="1770891312957" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

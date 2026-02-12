@@ -72,6 +72,34 @@ class FavoriteList:
             credential=self.credential
         )
 
+    async def download_all_audios(self, 
+                                download_dir: str = "./downloads",
+                                max_videos: int = None,
+                                quality: str = None,
+                                progress_callback=None) -> dict:
+        """
+        下载收藏夹中所有视频的音频
+        
+        Args:
+            download_dir (str): 下载目录
+            max_videos (int): 最大下载视频数
+            quality (str): 音质
+            progress_callback: 进度回调函数
+            
+        Returns:
+            dict: 下载结果统计
+        """
+        from .downloader import FavoriteListDownloader, ProgressCallback
+        
+        downloader = FavoriteListDownloader(self, download_dir)
+        progress_cb = ProgressCallback(progress_callback) if progress_callback else None
+        
+        return await downloader.download_all_audios(
+            max_videos=max_videos,
+            quality=quality,
+            progress_callback=progress_cb
+        )
+
 
 async def get_video_favorite_list(
     uid: int,

@@ -8,6 +8,7 @@ minimal_bilibili_api
 - 🔐 **登录支持**: 支持二维码登录
 - 📁 **收藏夹**: 获取收藏夹列表和内容
 - 🎵 **音频下载**: 获取音频信息和下载链接
+- 📥 **文件下载**: 支持单文件和批量下载
 - 🎬 **视频标题**: 获取视频标题信息
 - ⚡ **高性能**: 基于 curl_cffi，支持 HTTP/2
 
@@ -64,7 +65,51 @@ async def download_audio():
     download_info = await get_audio_download_url(auid=12345)
 ```
 
-### 4. 获取视频标题
+### 4. 文件下载功能
+
+```python
+from minimal_bilibili_api import (
+    download_video_audio, 
+    download_favorite_list_audios,
+    Video, 
+    FavoriteList
+)
+from minimal_bilibili_api.progress import create_simple_progress_callback
+
+async def download_examples():
+    # 单个视频音频下载
+    filepath = await download_video_audio(
+        bvid="BV1xx411c7mu",
+        download_dir="./downloads",
+        quality="192K",  # 可选音质
+        progress_callback=create_simple_progress_callback()
+    )
+    
+    # 使用Video类下载
+    video = Video(bvid="BV1xx411c7mu")
+    filepath = await video.download_audio_to_dir(
+        download_dir="./downloads",
+        quality="HI_RES"  # Hi-Res无损音质
+    )
+    
+    # 批量下载收藏夹音频
+    result = await download_favorite_list_audios(
+        media_id=12345,
+        download_dir="./downloads",
+        max_videos=10,  # 限制数量
+        quality="192K"
+    )
+    print(f"成功: {result['success']}, 失败: {result['failed']}")
+    
+    # 使用FavoriteList类下载
+    fav_list = FavoriteList(media_id=12345)
+    result = await fav_list.download_all_audios(
+        download_dir="./downloads",
+        max_videos=5
+    )
+```
+
+### 5. 获取视频标题
 
 ```python
 from minimal_bilibili_api import Video, get_video_title
@@ -114,6 +159,24 @@ async def get_title():
 
 #### `get_video_title(bvid/aid)`
 直接获取视频标题
+
+### 下载模块
+
+#### `download_video_audio(bvid, ...)`
+便捷函数：下载单个视频音频
+
+#### `download_favorite_list_audios(media_id, ...)`
+便捷函数：批量下载收藏夹音频
+
+#### `Video.download_audio_to_dir(...)`
+Video类方法：下载音频到指定目录
+
+#### `FavoriteList.download_all_audios(...)`
+FavoriteList类方法：批量下载收藏夹音频
+
+#### 进度显示工具
+- `create_simple_progress_callback()` - 简单进度显示
+- `create_batch_progress_callback()` - 批量进度显示
 
 ## 凭据管理
 
