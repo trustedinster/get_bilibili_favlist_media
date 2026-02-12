@@ -3,6 +3,14 @@
     "info": {
       "url": "https://api.bilibili.com/x/web-interface/view",
       "method": "GET"
+    },
+    "pages": {
+      "url": "https://api.bilibili.com/x/player/pagelist",
+      "method": "GET"
+    },
+    "playurl": {
+      "url": "https://api.bilibili.com/x/player/wbi/playurl",
+      "method": "GET"
     }
   }
 }

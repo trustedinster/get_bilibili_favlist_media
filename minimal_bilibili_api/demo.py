@@ -12,7 +12,8 @@ from minimal_bilibili_api import (
     Audio,
     get_audio_download_url,
     Video,
-    get_video_title
+    get_video_title,
+Credential
 )
 
 
@@ -78,25 +79,25 @@ async def demo_video(credential):
         # 测试获取视频标题
         title = await get_video_title(bvid="BV1GJ411x7h7", credential=credential)
         print(f"✅ 视频标题: {title}")
-        
+
         # 演示新的音频流功能
         print("\n--- 音频流功能演示 ---")
         video = Video(bvid="BV1GJ411x7h7", credential=credential)
-        
+
         # 获取音频流列表
         audio_streams = await video.get_audio_streams()
         print(f"发现 {len(audio_streams)} 个音频流:")
         for i, stream in enumerate(audio_streams, 1):
             print(f"  {i}. {stream.quality.name} - {stream.url[:60]}...")
-        
+
         # 获取最佳音频流
         best_audio = await video.get_best_audio_stream()
         if best_audio:
             print(f"\n最佳音频流: {best_audio.quality.name}")
             print(f"下载链接长度: {len(best_audio.url)} 字符")
-            
+
         print("✅ 视频音频流功能演示完成")
-        
+
     except Exception as e:
         print(f"❌ 视频操作失败: {e}")
 
@@ -107,17 +108,14 @@ async def main():
     print("=" * 50)
 
     # 1. 演示进行登录
-    credential = await demo_login()
+    credential = Credential()
     if not credential:
         return
 
     # 2. 收藏夹功能
-    await demo_favorite_list(credential)
+    # await demo_favorite_list(credential)
 
-    # 3. 音频功能
-    await demo_audio(credential)
-
-    # 4. 视频功能
+    # 3. 视频功能
     await demo_video(credential)
 
     print("\n🎉 演示完成!")

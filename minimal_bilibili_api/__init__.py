@@ -7,7 +7,6 @@ minimal_bilibili_api
 from .utils.network import Credential, Api
 from .login import QRCodeLogin
 from .favorite_list import FavoriteList, get_video_favorite_list, get_video_favorite_list_content
-from .audio import Audio, get_audio_download_url
 from .video import Video, get_video_title
 
 __version__ = "1.0.0"
@@ -15,12 +14,10 @@ __version__ = "1.0.0"
 __all__ = [
     "Credential",
     "Api",
-    "QRCodeLogin", 
+    "QRCodeLogin",
     "FavoriteList",
     "get_video_favorite_list",
-    "get_video_favorite_list_content", 
-    "Audio",
-    "get_audio_download_url",
+    "get_video_favorite_list_content",
     "Video",
     "get_video_title"
 ]

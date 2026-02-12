@@ -57,6 +57,9 @@ class VideoDownloadParser:
     
     def __init__(self, data: dict):
         self.data = data
+        # 处理可能的包装格式
+        if "data" in self.data:
+            self.data = self.data["data"]
         if self.data.get("video_info"):  # bangumi
             self.data = self.data["video_info"]
     
@@ -210,7 +213,10 @@ class Video:
         if self.aid:
             params["aid"] = self.aid
             
-        return await Api(**api, credential=self.credential).update_params(**params).result
+        # 分步调用避免链式调用问题
+        api_instance = Api(**api, credential=self.credential)
+        api_instance.update_params(**params)
+        return await api_instance.result()
 
     async def get_title(self) -> str:
         """
@@ -240,7 +246,9 @@ class Video:
         if self.aid:
             pages_params["aid"] = self.aid
             
-        pages_result = await Api(**pages_api, credential=self.credential).update_params(**pages_params).result
+        api_instance = Api(**pages_api, credential=self.credential)
+        api_instance.update_params(**pages_params)
+        pages_result = await api_instance.result()
         pages = pages_result.get("data", []) if "data" in pages_result else pages_result
         
         if page_index >= len(pages):
@@ -260,7 +268,9 @@ class Video:
             "cid": cid
         }
         
-        return await Api(**playurl_api, credential=self.credential, wbi=True).update_params(**playurl_params).result
+        api_instance = Api(**playurl_api, credential=self.credential, wbi=True)
+        api_instance.update_params(**playurl_params)
+        return await api_instance.result()
 
     async def get_audio_streams(self, page_index: int = 0) -> List[AudioStream]:
         """

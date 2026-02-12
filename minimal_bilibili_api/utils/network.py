@@ -122,26 +122,20 @@ class Credential:
             raise Exception("缺少 DedeUserID")
 
 
-@dataclass  
 class Api:
     """
     API 请求类
     """
-    url: str
-    method: str = "GET"
-    credential: Optional[Credential] = None
-    params: Dict = None
-    data: Dict = None
-    headers: Dict = None
-    wbi: bool = False
     
-    def __post_init__(self):
-        if self.params is None:
-            self.params = {}
-        if self.data is None:
-            self.data = {}
-        if self.headers is None:
-            self.headers = {}
+    def __init__(self, url: str, method: str = "GET", credential: Optional[Credential] = None, 
+                 params: Dict = None, data: Dict = None, headers: Dict = None, wbi: bool = False):
+        self.url = url
+        self.method = method
+        self.credential = credential
+        self.params = params if params is not None else {}
+        self.data = data if data is not None else {}
+        self.headers = headers if headers is not None else {}
+        self.wbi = wbi
             
     def update_params(self, **kwargs):
         self.params.update(kwargs)
